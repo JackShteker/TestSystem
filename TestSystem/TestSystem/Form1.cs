@@ -21,6 +21,7 @@ namespace TestSystem
         {
             MessageBox.Show("Hello Yarolav");
             TaskList taskList = new TaskList();
+            MessageBox.Show(taskList.GetTask(1).GetQuestion());
         }
     }
 }
