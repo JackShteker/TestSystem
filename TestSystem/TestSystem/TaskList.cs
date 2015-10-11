@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace TestSystem
 {   
@@ -12,7 +13,7 @@ namespace TestSystem
         class Task
         {
             private string Question;
-            string [] Ans = new string[5];
+            private string [] Ans = new string[5];
             Task(string Question, string Ans1, string Ans2, string Ans3, string Ans4, string Ans5)
             {
                 this.Question = Question;
@@ -35,7 +36,17 @@ namespace TestSystem
             }      
         }
         byte current = 1;
-        int[][] Tasks = new int[50][];
-        
+        Task[] Tasks = new Task[50];
+        public TaskList()
+        {
+
+            FileStream fileStream = new FileStream(string.Join(Directory.GetCurrentDirectory(),"\\Tasks.txt"), FileMode.Open);
+            for (int i = 0; i < Tasks.Length; i++)
+            {
+                Tasks[i] = new Task();
+            }
+            fileStream.Close();
+        }
+
     }
 }
