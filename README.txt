@@ -1,1 +1,0 @@
-Idi nahuy
