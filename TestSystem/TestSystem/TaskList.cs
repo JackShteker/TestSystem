@@ -11,7 +11,7 @@ namespace TestSystem
     
     public class TaskList
     {
-        class Task
+       public  class Task
         {
             private string Question;
             private string [] Ans = new string[5];
@@ -36,10 +36,10 @@ namespace TestSystem
                 return new string[] { str[0], str[1], str[2], str[3], str[4] };
             }      
         }
-        Task[] Tasks = new Task[50];
+         Task[] Tasks = new Task[50];
         public TaskList()
         {
-            MessageBox.Show(Directory.GetCurrentDirectory());
+           // MessageBox.Show(Directory.GetCurrentDirectory());
             using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"\\Tasks.txt"))
             {
                 int current = 0;
@@ -56,6 +56,10 @@ namespace TestSystem
                     MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
                 }
             }
+        }
+        public Task GetTask(byte index)
+        {
+            return Tasks[index];
         }
 
     }
