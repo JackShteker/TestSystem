@@ -14,6 +14,7 @@ namespace TestSystem
         [STAThread]
         static void Main()
         {
+            Console.WriteLine("Hello Yarolav");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
