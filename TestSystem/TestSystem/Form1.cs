@@ -20,6 +20,7 @@ namespace TestSystem
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
             MessageBox.Show("Hello Yarolav");
+            TaskList taskList = new TaskList();
         }
     }
 }
