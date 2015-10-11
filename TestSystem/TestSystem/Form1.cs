@@ -16,5 +16,10 @@ namespace TestSystem
         {
             InitializeComponent();
         }
+
+        private void Form1_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("Hello Yarolav");
+        }
     }
 }
