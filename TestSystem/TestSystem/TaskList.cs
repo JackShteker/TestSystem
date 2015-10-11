@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +14,7 @@ namespace TestSystem
         {
             private string Question;
             private string [] Ans = new string[5];
-            Task(string Question, string Ans1, string Ans2, string Ans3, string Ans4, string Ans5)
+            public Task(string Question, string Ans1, string Ans2, string Ans3, string Ans4, string Ans5)
             {
                 this.Question = Question;
                 this.Ans[0] = Ans1;
@@ -39,19 +39,17 @@ namespace TestSystem
         Task[] Tasks = new Task[50];
         public TaskList()
         {
-
-            using (StreamReader readStream = File.Open((string.Join(Directory.GetCurrentDirectory(),"\\Tasks.txt"), FileMode.Open)
+            using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"TestFile.txt"))
             {
-                string line;
                 int current = 0;
-                string[] lines = new string [6];
-                while (readStream.Peek() != null)
+                string[] lines = new string[6];
+                while (readStream.Peek() != -1)
                 {
-                    for(int i = 0; i < 6; i++)
+                    for (int i = 0; i < 6; i++)
                     {
                         lines[i] = readStream.ReadLine();
                     }
-                    Tasks[current] = Task(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
+                    Tasks[current] = new Task(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
                     current++;
                 }
             }
