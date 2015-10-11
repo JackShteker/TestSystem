@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 namespace TestSystem
 {   
@@ -35,11 +36,11 @@ namespace TestSystem
                 return new string[] { str[0], str[1], str[2], str[3], str[4] };
             }      
         }
-        byte current = 1;
         Task[] Tasks = new Task[50];
         public TaskList()
         {
-            using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"TestFile.txt"))
+            MessageBox.Show(Directory.GetCurrentDirectory());
+            using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"\\Tasks.txt"))
             {
                 int current = 0;
                 string[] lines = new string[6];
@@ -49,8 +50,10 @@ namespace TestSystem
                     {
                         lines[i] = readStream.ReadLine();
                     }
+
                     Tasks[current] = new Task(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
                     current++;
+                    MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
                 }
             }
         }
