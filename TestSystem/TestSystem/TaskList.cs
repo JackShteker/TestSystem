@@ -40,16 +40,16 @@ namespace TestSystem
         public TaskList()
         {
 
-            using (FileStream fileStream = File.Open((string.Join(Directory.GetCurrentDirectory(),"\\Tasks.txt"), FileMode.Open)
+            using (StreamReader readStream = File.Open((string.Join(Directory.GetCurrentDirectory(),"\\Tasks.txt"), FileMode.Open)
             {
                 string line;
                 int current = 0;
                 string[] lines = new string [6];
-                while (fileStream.Peek() != null)
+                while (readStream.Peek() != null)
                 {
                     for(int i = 0; i < 6; i++)
                     {
-                        lines[i] = fileStream.ReadLine();
+                        lines[i] = readStream.ReadLine();
                     }
                     Tasks[current] = Task(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
                     current++;
