@@ -41,7 +41,7 @@ namespace TestSystem
                 else {return true}
             }  
         }
-         Task[] Tasks = new Task[50];
+        private Task[] Tasks = new Task[50];
         public TaskList()
         {
            // MessageBox.Show(Directory.GetCurrentDirectory());
