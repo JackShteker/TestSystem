@@ -35,10 +35,10 @@ namespace TestSystem
                 Array.Resize(ref str, 5);
                 return new string[] { str[0], str[1], str[2], str[3], str[4] };
             }
-            public string SendAnswer(ans)
+            public bool SendAnswer(string ans)
             {
-                if (ans != Ans[0]) {return false}
-                else {return true}
+                if (ans != Ans[0]) { return false; }
+                else { return true; }
             }  
         }
         private Task[] Tasks = new Task[50];
