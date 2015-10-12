@@ -34,7 +34,12 @@ namespace TestSystem
                 string[] str = this.Ans.OrderBy(x => rand.Next()).ToArray();
                 Array.Resize(ref str, 5);
                 return new string[] { str[0], str[1], str[2], str[3], str[4] };
-            }      
+            }
+            public string SendAnswer(ans)
+            {
+                if (ans != Ans[0]) {return false}
+                else {return true}
+            }  
         }
          Task[] Tasks = new Task[50];
         public TaskList()
