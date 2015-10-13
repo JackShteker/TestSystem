@@ -22,8 +22,10 @@ namespace TestSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Width = this.Width;
-            tableLayoutPanel1.Height = this.Height;
+            this.Width = SystemInformation.VirtualScreen.Width;
+            this.Height = SystemInformation.VirtualScreen.Height;
+            tableLayoutPanel1.Width = this.Width-100;
+            tableLayoutPanel1.Height = this.Height-100;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -62,17 +64,33 @@ namespace TestSystem
                     correctAnswers[index] = true;
                 }
             }
+            else if (radioAnswer6.Checked)
+            {
+                if (taskList.GetTask(index).SendAnswer(radioAnswer6.Text))
+                {
+                    correctAnswers[index] = true;
+                }
+            }
+            else if (radioAnchor7.Checked)
+            {
+                if (taskList.GetTask(index).SendAnswer(radioAnchor7.Text))
+                {
+                    correctAnswers[index] = true;
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            label1.Text = taskList.GetTask(1).GetQuestion();
+            textBox1.Lines = taskList.GetTask(1).GetCodeSample();
             string[] answers = taskList.GetTask(1).GetAnswers();
             radioAnswer1.Text = answers[0];
             radioAnswer2.Text = answers[1];
             radioAnswer3.Text = answers[2];
             radioAnswer4.Text = answers[3];
             radioAnswer5.Text = answers[4];
+            radioAnswer6.Text = answers[5];
+            radioAnchor7.Text = answers[6];
         }
     }
 }
