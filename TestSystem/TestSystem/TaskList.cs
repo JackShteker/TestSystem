@@ -66,7 +66,7 @@ namespace TestSystem
         {
             return Tasks[index];
         }
-        public byte len()
+        public int Len()
         {
             return Tasks.Length;
         }
