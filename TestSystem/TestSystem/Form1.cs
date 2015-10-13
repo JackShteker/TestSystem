@@ -5,7 +5,7 @@ namespace TestSystem
     public partial class Form1 : Form
     {
         TaskList taskList = new TaskList();
-        bool [] correctAnswers = new bool [taskList.len()];
+        bool [] correctAnswers = new bool [50];
         byte index;
         public Form1()
         {
@@ -27,37 +27,37 @@ namespace TestSystem
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (radioAnswer1.checked)
+            if (radioAnswer1.Checked)
             {
-                if (taskList[index].SendAnswer(radioAnswer1.Text))
+                if (taskList.GetTask(index).SendAnswer(radioAnswer1.Text))
                 {
                     correctAnswers[index] = true;
                 }
             }
-            else if (radioAnswer2.checked)
+            else if (radioAnswer2.Checked)
             {
-                if (taskList[index].SendAnswer(radioAnswer2.Text))
+                if (taskList.GetTask(index).SendAnswer(radioAnswer2.Text))
                 {
                     correctAnswers[index] = true;
                 }
             }
-            else if (radioAnswer3.checked)
+            else if (radioAnswer3.Checked)
             {
-                if (taskList[index].SendAnswer(radioAnswer3.Text))
+                if (taskList.GetTask(index).SendAnswer(radioAnswer3.Text))
                 {
                     correctAnswers[index] = true;
                 }        
             }
-            else if (radioAnswer4.checked)
+            else if (radioAnswer4.Checked)
             {
-                if (taskList[index].SendAnswer(radioAnswer4.Text))
+                if (taskList.GetTask(index).SendAnswer(radioAnswer4.Text))
                 {
                     correctAnswers[index] = true;
                 }         
             }
-            else if (radioAnswer5.checked)
+            else if (radioAnswer5.Checked)
             {
-                if (taskList[index].SendAnswer(radioAnswer5.Text))
+                if (taskList.GetTask(index).SendAnswer(radioAnswer5.Text))
                 {
                     correctAnswers[index] = true;
                 }
