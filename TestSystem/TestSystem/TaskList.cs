@@ -14,26 +14,34 @@ namespace TestSystem
        public  class Task
         {
             private string Question;
-            private string [] Ans = new string[5];
-            public Task(string Question, string Ans1, string Ans2, string Ans3, string Ans4, string Ans5)
+            private string [] Ans = new string[7];
+            private string[] codeSample = new string[9];
+            public Task(string Question, string[] codeSample,string Ans1, string Ans2, string Ans3, string Ans4, string Ans5, string Ans6, string Ans7)
             {
                 this.Question = Question;
+                this.codeSample = codeSample;
                 this.Ans[0] = Ans1;
                 this.Ans[1] = Ans2;
                 this.Ans[2] = Ans3;
                 this.Ans[3] = Ans4;
                 this.Ans[4] = Ans5;
+                this.Ans[5] = Ans6;
+                this.Ans[6] = Ans7;
             }
             public string GetQuestion()
             {
                 return Question;
             } 
+            public string [] GetCodeSample()
+            {
+                return codeSample;
+            }
             public string [] GetAnswers()
             {
                 Random rand = new Random();
                 string[] str = this.Ans.OrderBy(x => rand.Next()).ToArray();
-                Array.Resize(ref str, 5);
-                return new string[] { str[0], str[1], str[2], str[3], str[4] };
+                Array.Resize(ref str, 7);
+                return new string[] { str[0], str[1], str[2], str[3], str[4], str[5], str[6] };
             }
             public bool SendAnswer(string ans)
             {
@@ -48,17 +56,32 @@ namespace TestSystem
             using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"\\Tasks.txt"))
             {
                 int current = 0;
-                string[] lines = new string[6];
+                string[] lines = new string[8];
+                string[] code = new string[9];
                 while (readStream.Peek() != -1)
                 {
-                    for (int i = 0; i < 6; i++)
+                    ///lines[0] = readStream.ReadLine();
+                    ///int j = 0;
+                   /// code[j] = readStream.ReadLine();
+                    ///j++;
+                   /// while (code[j-1][0] != '&')
+                    ///{
+                    ///    code[j] = readStream.ReadLine();
+                    ///    j++;                                    
+                   /// }
+                    for (int j = 0; j<5; j++)
+                    {
+                        code[j] = readStream.ReadLine();
+                    }
+                   // readStream.ReadLine();
+                    for (int i = 1; i < 8; i++)
                     {
                         lines[i] = readStream.ReadLine();
                     }
 
-                    Tasks[current] = new Task(lines[0], lines[1], lines[2], lines[3], lines[4], lines[5]);
+                    Tasks[current] = new Task(lines[0], code, lines[1], lines[2], lines[3], lines[4], lines[5], lines[6], lines[7]);
                     current++;
-                    MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
+                    //MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
                 }
             }
         }
