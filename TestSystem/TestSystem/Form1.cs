@@ -51,6 +51,9 @@ namespace TestSystem
             tableLayoutPanel1.Width = this.Width - 100;
             tableLayoutPanel1.Height = this.Height - 100;
             index = 0;
+            // MessageBox.Show(taskList.GetTask(0).GetAnswers()[0]);
+            // MessageBox.Show(taskList.GetTask(1).GetAnswers()[0]);
+            Refresh();
         }
         public void RadioCheck(RadioButton radioAnswer)
         {
@@ -89,10 +92,6 @@ namespace TestSystem
             {
                 radioAnswer.Visible = false;
             }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Refresh();
         }
     }
 }

@@ -35,7 +35,6 @@
             this.radioAnswer3 = new System.Windows.Forms.RadioButton();
             this.radioAnswer2 = new System.Windows.Forms.RadioButton();
             this.radioAnswer4 = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
             this.radioAnswer1 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelTask = new System.Windows.Forms.Label();
@@ -126,17 +125,6 @@
             this.radioAnswer4.Text = "radioButton2";
             this.radioAnswer4.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(471, 445);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(78, 45);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // radioAnswer1
             // 
             this.radioAnswer1.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -160,7 +148,6 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer4, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer2, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer3, 2, 1);
@@ -226,7 +213,6 @@
         private System.Windows.Forms.RadioButton radioAnswer3;
         private System.Windows.Forms.RadioButton radioAnswer2;
         private System.Windows.Forms.RadioButton radioAnswer4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RadioButton radioAnswer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label labelTask;
