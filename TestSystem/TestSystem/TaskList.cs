@@ -20,8 +20,8 @@ namespace TestSystem
             public Task(string Question, string[] codeSample, string[] Answers, string correct)
             {
                 this.Question = Question;
-                this.codeSample = codeSample;
-                this.Ans = Answers;
+                Array.Copy(codeSample, this.codeSample , 9);
+                Array.Copy(Answers, this.Ans, 7);
                 this.Correct = correct;
             }
             public string GetQuestion()
@@ -70,23 +70,25 @@ namespace TestSystem
                     for (int i = 0; i < 7; i++)
                     {
                         lines[i] = readStream.ReadLine();
-                        MessageBox.Show(lines[i]);
+                        //MessageBox.Show(lines[i]);
                         if (lines [i][lines[i].Length-1] == '&')
                         {
                             lines[i] = lines[i].Remove(lines[i].Length - 1);
                             correct = lines[i];
                         }
                     }
-                    MessageBox.Show(lines[0]+"current="+current.ToString());
+                    //MessageBox.Show(lines[0]+"current="+current.ToString());
                     Tasks[current] = new Task(Quest, code, lines, correct);
                     current++;
                     //MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
+                   // MessageBox.Show("current="+(current-1).ToString()+Tasks[current-1].GetAnswers()[0]);
+                   // MessageBox.Show("current=" + (current - 1).ToString() + GetTask(current-1).GetAnswers()[0]);
                 }
             }
         }
-        public Task GetTask(byte index)
+        public Task GetTask(int num)
         {
-            return Tasks[index];
+            return Tasks[num];
         }
         public int Len()
         {
