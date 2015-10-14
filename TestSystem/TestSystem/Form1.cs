@@ -12,7 +12,6 @@ namespace TestSystem
             InitializeComponent();
 
         }
-        const int number = 2;
         public override void  Refresh()
         {
             radioAnswer1.Visible = true;
@@ -39,9 +38,9 @@ namespace TestSystem
         private string CountScore()
         {
             int counter = 0;
-            for (int i = 0; i < number; i++)
+            for (int i = 0; i < taskList.Len(); i++)
                 if (correctAnswers[i]) counter++;
-            return (counter.ToString() + "/" + number);
+            return (counter.ToString() + "/" + taskList.Len());
         }
 
         private void Form1_Load(object sender, EventArgs e)
