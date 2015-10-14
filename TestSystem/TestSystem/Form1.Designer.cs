@@ -38,7 +38,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.radioAnswer1 = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelTask = new System.Windows.Forms.Label();
+            this.labelCode = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,7 +168,8 @@
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer5, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.radioAnswer6, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.radioAnchor7, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelTask, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelCode, 2, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(33, 14);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
@@ -178,12 +180,23 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1022, 536);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // textBox1
+            // labelTask
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
+            this.labelTask.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.labelTask, 2);
+            this.labelTask.Location = new System.Drawing.Point(4, 1);
+            this.labelTask.Name = "labelTask";
+            this.labelTask.Size = new System.Drawing.Size(35, 13);
+            this.labelTask.TabIndex = 10;
+            this.labelTask.Text = "label1";
+            // 
+            // labelCode
+            // 
+            this.labelCode.AutoSize = true;
+            this.labelCode.Location = new System.Drawing.Point(684, 1);
+            this.labelCode.Name = "labelCode";
+            this.labelCode.Size = new System.Drawing.Size(0, 13);
+            this.labelCode.TabIndex = 11;
             // 
             // Form1
             // 
@@ -195,7 +208,7 @@
             this.Text = "TestSystem";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
+            //this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -214,7 +227,8 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.RadioButton radioAnswer1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelTask;
+        private System.Windows.Forms.Label labelCode;
     }
 }
 

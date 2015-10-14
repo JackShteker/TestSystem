@@ -13,19 +13,13 @@ namespace TestSystem
             
         }
 
-        private void Form1_MouseClick(object sender, MouseEventArgs e)
-        {
-            MessageBox.Show("Hello Yarolav");
-           // TaskList taskList = new TaskList();
-           //MessageBox.Show(taskList.GetTask(1).GetQuestion());
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Width = SystemInformation.VirtualScreen.Width;
             this.Height = SystemInformation.VirtualScreen.Height;
             tableLayoutPanel1.Width = this.Width-100;
             tableLayoutPanel1.Height = this.Height-100;
+            index = 0;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -82,8 +76,12 @@ namespace TestSystem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Lines = taskList.GetTask(1).GetCodeSample();
-            string[] answers = taskList.GetTask(1).GetAnswers();
+            labelCode.Text = "";
+            string[] k3k = taskList.GetTask(index).GetCodeSample();
+            labelTask.Text = taskList.GetTask(index).GetQuestion();
+            foreach (string element in k3k)
+                labelCode.Text = labelCode.Text + element + Environment.NewLine;
+            string[] answers = taskList.GetTask(index).GetAnswers();
             radioAnswer1.Text = answers[0];
             radioAnswer2.Text = answers[1];
             radioAnswer3.Text = answers[2];
