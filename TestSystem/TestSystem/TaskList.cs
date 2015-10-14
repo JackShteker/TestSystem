@@ -16,11 +16,13 @@ namespace TestSystem
             private string Question;
             private string [] Ans = new string[7];
             private string[] codeSample = new string[9];
-            public Task(string Question, string[] codeSample, string[] Answers)
+            private string Correct;
+            public Task(string Question, string[] codeSample, string[] Answers, string correct)
             {
                 this.Question = Question;
                 this.codeSample = codeSample;
                 this.Ans = Answers;
+                this.Correct = correct;
             }
             public string GetQuestion()
             {
@@ -32,14 +34,14 @@ namespace TestSystem
             }
             public string [] GetAnswers()
             {
-                Random rand = new Random();
-                string[] str = this.Ans.OrderBy(x => rand.Next()).ToArray();
-                Array.Resize(ref str, 7);
-                return str;
+                ///Random rand = new Random();
+                ///string[] str = this.Ans.OrderBy(x => rand.Next()).ToArray();
+                ///Array.Resize(ref str, 7);
+                return Ans;
             }
             public bool SendAnswer(string ans)
             {
-                if (ans != Ans[0]) { return false; }
+                if (ans != this.Correct) { return false; }
                 else { return true; }
             }  
         }
@@ -53,6 +55,7 @@ namespace TestSystem
                 string[] lines = new string[7];
                 string[] code = new string[9];
                 string Quest;
+                string correct = "";
                 while (readStream.Peek() != -1)
                 {
                     Quest = readStream.ReadLine();
@@ -67,9 +70,15 @@ namespace TestSystem
                     for (int i = 0; i < 7; i++)
                     {
                         lines[i] = readStream.ReadLine();
+                        MessageBox.Show(lines[i]);
+                        if (lines [i][lines[i].Length-1] == '&')
+                        {
+                            lines[i] = lines[i].Remove(lines[i].Length - 1);
+                            correct = lines[i];
+                        }
                     }
-
-                    Tasks[current] = new Task(Quest, code, lines);
+                    MessageBox.Show(lines[0]+"current="+current.ToString());
+                    Tasks[current] = new Task(Quest, code, lines, correct);
                     current++;
                     //MessageBox.Show(Tasks[current-1].GetAnswers()[0]+ Tasks[current - 1].GetAnswers()[1] + Tasks[current - 1].GetAnswers()[2] + Tasks[current - 1].GetAnswers()[3] + Tasks[current - 1].GetAnswers()[4]);
                 }
