@@ -46,11 +46,13 @@ namespace TestSystem
             }  
         }
         private Task[] Tasks = new Task[50];
+        private int Length;
         public TaskList()
         {
            // MessageBox.Show(Directory.GetCurrentDirectory());
             using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"\\Tasks.txt"))
             {
+                Length = Convert.ToInt16(readStream.ReadLine());
                 int current = 0;
                 string[] lines = new string[7];
                 string[] code = new string[9];
@@ -92,7 +94,7 @@ namespace TestSystem
         }
         public int Len()
         {
-            return Tasks.Length;
+            return Length;
         }
     }
 }
