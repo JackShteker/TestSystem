@@ -5,90 +5,94 @@ namespace TestSystem
     public partial class Form1 : Form
     {
         TaskList taskList = new TaskList();
-        bool [] correctAnswers = new bool [50];
+        bool[] correctAnswers = new bool[50];
         byte index;
         public Form1()
         {
             InitializeComponent();
-            
-        }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.Width = SystemInformation.VirtualScreen.Width;
-            this.Height = SystemInformation.VirtualScreen.Height;
-            tableLayoutPanel1.Width = this.Width-100;
-            tableLayoutPanel1.Height = this.Height-100;
-            index = 0;
         }
-        private void button1_Click(object sender, EventArgs e)
+        const int number = 2;
+        public override void  Refresh()
         {
-            if (radioAnswer1.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer1.Text))
-                {
-                    correctAnswers[index] = true;
-                }
-            }
-            else if (radioAnswer2.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer2.Text))
-                {
-                    correctAnswers[index] = true;
-                }
-            }
-            else if (radioAnswer3.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer3.Text))
-                {
-                    correctAnswers[index] = true;
-                }        
-            }
-            else if (radioAnswer4.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer4.Text))
-                {
-                    correctAnswers[index] = true;
-                }         
-            }
-            else if (radioAnswer5.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer5.Text))
-                {
-                    correctAnswers[index] = true;
-                }
-            }
-            else if (radioAnswer6.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnswer6.Text))
-                {
-                    correctAnswers[index] = true;
-                }
-            }
-            else if (radioAnchor7.Checked)
-            {
-                if (taskList.GetTask(index).SendAnswer(radioAnchor7.Text))
-                {
-                    correctAnswers[index] = true;
-                }
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
+            radioAnswer1.Visible = true;
+            radioAnswer2.Visible = true;
+            radioAnswer3.Visible = true;
+            radioAnswer4.Visible = true;
+            radioAnswer5.Visible = true;
+            radioAnswer6.Visible = true;
+            radioAnswer7.Visible = true;
             labelCode.Text = "";
             string[] k3k = taskList.GetTask(index).GetCodeSample();
             labelTask.Text = taskList.GetTask(index).GetQuestion();
             foreach (string element in k3k)
                 labelCode.Text = labelCode.Text + element + Environment.NewLine;
             string[] answers = taskList.GetTask(index).GetAnswers();
-            radioAnswer1.Text = answers[0];
-            radioAnswer2.Text = answers[1];
-            radioAnswer3.Text = answers[2];
-            radioAnswer4.Text = answers[3];
-            radioAnswer5.Text = answers[4];
-            radioAnswer6.Text = answers[5];
-            radioAnchor7.Text = answers[6];
+            PrintAns(radioAnswer1, answers[0]);
+            PrintAns(radioAnswer2, answers[1]);
+            PrintAns(radioAnswer3, answers[2]);
+            PrintAns(radioAnswer4, answers[3]);
+            PrintAns(radioAnswer5, answers[4]);
+            PrintAns(radioAnswer6, answers[5]);
+            PrintAns(radioAnswer7, answers[6]);
+        }
+        private string CountScore()
+        {
+            int counter = 0;
+            for (int i = 0; i < number; i++)
+                if (correctAnswers[i]) counter++;
+            return (counter.ToString() + "/" + number);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Width = SystemInformation.VirtualScreen.Width;
+            this.Height = SystemInformation.VirtualScreen.Height;
+            tableLayoutPanel1.Width = this.Width - 100;
+            tableLayoutPanel1.Height = this.Height - 100;
+            index = 0;
+        }
+        public void RadioCheck(RadioButton radioAnswer)
+        {
+            if (radioAnswer.Checked)
+            {
+                if (taskList.GetTask(index).SendAnswer(radioAnswer.Text))
+                {
+                    correctAnswers[index] = true;
+                }
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            
+            RadioCheck(radioAnswer1);
+            RadioCheck(radioAnswer2);
+            RadioCheck(radioAnswer3);
+            RadioCheck(radioAnswer4);
+            RadioCheck(radioAnswer5);
+            RadioCheck(radioAnswer6);
+            RadioCheck(radioAnswer7);
+            if (index == 1) MessageBox.Show(CountScore());
+            else
+            {
+                index++;
+                Refresh();
+            }
+        }
+        private void PrintAns(RadioButton radioAnswer, string answer)
+        {
+            if (answer != "-")
+            {
+                radioAnswer.Text = answer;
+            }
+            else
+            {
+                radioAnswer.Visible = false;
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }
