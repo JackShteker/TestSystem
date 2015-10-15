@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Forms;
 
 namespace TestSystem
 {   
@@ -13,14 +8,15 @@ namespace TestSystem
     {
        public  class Task
         {
+            const byte maxCode = 14;
             private string Question;
             private string [] Ans = new string[7];
-            private string[] codeSample = new string[9];
+            private string[] codeSample = new string[maxCode];
             private string Correct;
             public Task(string Question, string[] codeSample, string[] Answers, string correct)
             {
                 this.Question = Question;
-                Array.Copy(codeSample, this.codeSample , 9);
+                Array.Copy(codeSample, this.codeSample , maxCode);
                 Array.Copy(Answers, this.Ans, 7);
                 this.Correct = correct;
             }
@@ -49,16 +45,18 @@ namespace TestSystem
         private int Length;
         public TaskList()
         {
-           // MessageBox.Show(Directory.GetCurrentDirectory());
+            const byte maxCode = 14;
+            // MessageBox.Show(Directory.GetCurrentDirectory());
             using (StreamReader readStream = new StreamReader(Directory.GetCurrentDirectory()+"\\Tasks.txt"))
             {
                 Length = Convert.ToInt16(readStream.ReadLine());
                 int current = 0;
                 string[] lines = new string[7];
-                string[] code = new string[9];
+                string[] code = new string[maxCode];
                 string Quest;
                 string correct = "";
-                while (readStream.Peek() != -1)
+               // while (readStream.Peek() != -1)
+                 for(int p=0; p<Length; p++)
                 {
                     Quest = readStream.ReadLine();
                     int j = 0;
