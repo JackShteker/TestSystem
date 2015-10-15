@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Mail;
 namespace TestSystem
 {
     public partial class Form1 : Form
@@ -11,6 +13,32 @@ namespace TestSystem
         {
             InitializeComponent();
 
+        }
+        public void SendEmail()
+        {
+            var fromAddress = new MailAddress("vova.gleb.testsystem@gmail.com", "Vova_Gleb_TestSystem");
+            var toAddress = new MailAddress("glebun2@gmail.com", "Irina Sklyar");
+            const string fromPassword = "nanomandarin1488";
+            string subject = "Test Score";
+            string body =  CountScore();
+
+        var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+            };
+            using (var message = new MailMessage(fromAddress, toAddress)
+            {
+                Subject = subject,
+                Body = body
+            })
+            {
+                smtp.Send(message);
+            }
         }
         public override void  Refresh()
         {
@@ -74,7 +102,11 @@ namespace TestSystem
             RadioCheck(radioAnswer5);
             RadioCheck(radioAnswer6);
             RadioCheck(radioAnswer7);
-            if (index == 1) MessageBox.Show(CountScore());
+            if (index == 1)
+            {
+                MessageBox.Show(CountScore());
+                SendEmail();
+            }
             else
             {
                 index++;
