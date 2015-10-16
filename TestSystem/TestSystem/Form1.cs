@@ -1,4 +1,5 @@
-﻿using System;
+﻿#define stick(thiss,toThis) thiss##toThis
+using System;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
@@ -76,13 +77,14 @@ namespace TestSystem
         }
         public override void  Refresh()
         {
-            radioAnswer1.Visible = true;
+            for(int i = 1; i <=7; i++){stick(radioAnswer,i).Visible = True;}
+            /*radioAnswer1.Visible = true;
             radioAnswer2.Visible = true;
             radioAnswer3.Visible = true;
             radioAnswer4.Visible = true;
             radioAnswer5.Visible = true;
             radioAnswer6.Visible = true;
-            radioAnswer7.Visible = true;
+            radioAnswer7.Visible = true;*/
             labelCode.Text = "";
             string[] k3k = taskList.GetTask(randomTask.GetTask(index)).GetCodeSample();
             labelTask.Text = taskList.GetTask(randomTask.GetTask(index)).GetQuestion();
