@@ -84,10 +84,12 @@ namespace TestSystem
             radioAnswer6.Visible = true;
             radioAnswer7.Visible = true;
             labelCode.Text = "";
-            string[] k3k = taskList.GetTask(randomTask.GetTask(index)).GetCodeSample();
+            string[] codeSample = taskList.GetTask(randomTask.GetTask(index)).GetCodeSample();
             labelTask.Text = taskList.GetTask(randomTask.GetTask(index)).GetQuestion();
-            foreach (string element in k3k)
+          //  MessageBox.Show(labelCode.Text);
+            foreach (string element in codeSample)
                 labelCode.Text = labelCode.Text + element + Environment.NewLine;
+           // MessageBox.Show(labelCode.Text);
             string[] answers = taskList.GetTask(randomTask.GetTask(index)).GetAnswers();
             PrintAns(radioAnswer1, answers[0]);
             PrintAns(radioAnswer2, answers[1]);
